@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.half {
+  height: 50%;
+}
+
+.red {
+  background-color: rgb(239, 64, 53);
+}
+
+.white {
+  background-color: "white";
+}
+
+.pale-black {
+  background-color: #58585a;
+}
+
+.bond {
+  height: 8rem;
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  transform: translateY(-50%);
+  border-top: 1rem solid black;
+  border-bottom: 1rem solid black;
+  z-index: 11;
+}
+
+.ball-center {
+  width: 17rem;
+  height: 17rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  background-color: #58585a;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1rem solid black;
+}
+
+.ball-center-pale-black {
+  width: 15.5rem;
+  height: 15.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 11;
+  background-color: #58585a;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.big-white-ball {
+  width: 11rem;
+  height: 11rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 12;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 0.8rem solid black;
+}
+
+.small-white-ball {
+  width: 7rem;
+  height: 7rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 13;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 0.3rem solid black;
+}
