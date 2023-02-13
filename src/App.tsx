@@ -3,10 +3,9 @@ import Loading from "./components/Loading";
 
 function App() {
   return (
-    <>
-      <div>sdsdsdsd</div>
-      <Loading />
-    </>
+    <div>
+      <h1>sdsdsdsd</h1>
+    </div>
   );
 }
 
