@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  position: relative;
+  width: 60rem;
+  height: 100vh;
+}
+
+.card {
+  width: 20rem;
+  height: 27.9rem;
+  position: absolute;
+  transform-origin: bottom center;
+  top: 50%;
+  right: 50%;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.first {
+  rotate: -30deg;
+  z-index: 2;
+}
+
+.second {
+  z-index: 1;
+}
+
+.third {
+  rotate: 30deg;
+  z-index: -1;
+}
