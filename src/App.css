@@ -2,21 +2,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .card-container {
   position: relative;
-  width: 60rem;
-  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card {
   width: 20rem;
   height: 27.9rem;
-  position: absolute;
-  transform-origin: bottom center;
-  top: 50%;
-  right: 50%;
 }
 
 .card img {
@@ -24,16 +23,42 @@
   height: auto;
 }
 
-.first {
-  rotate: -30deg;
-  z-index: 2;
+.center {
+  transform: scale(1.2);
 }
 
 .second {
-  z-index: 1;
+  transform-origin: bottom right;
+  rotate: -30deg;
 }
 
-.third {
+.fourth {
+  transform-origin: bottom left;
   rotate: 30deg;
-  z-index: -1;
+}
+
+.icon-container {
+  z-index: 100;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.left {
+  top: 50%;
+  left: 38%;
+}
+.right {
+  top: 50%;
+  right: 38%;
+}
+.icons {
+  width: 30px;
+  height: 30px;
+  z-index: 100;
+  color: white;
 }

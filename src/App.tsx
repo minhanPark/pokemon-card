@@ -28,14 +28,46 @@ function App() {
   return (
     <div className="container">
       <div className="card-container">
-        <div className="card first">
+        <div className="card second">
           <img src="https://images.pokemontcg.io/bw5/1_hires.png" alt="1" />
         </div>
-        <div className="card second">
+        <div className="card center">
           <img src="https://images.pokemontcg.io/bw5/2_hires.png" alt="1" />
         </div>
-        <div className="card third">
+        <div className="card fourth">
           <img src="https://images.pokemontcg.io/ru1/1_hires.png" alt="1" />
+        </div>
+        <div className="icon-container left">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="icons"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </div>
+        <div className="icon-container right">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="icons"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
         </div>
       </div>
     </div>
