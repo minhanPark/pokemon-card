@@ -1,45 +1,33 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
-import { getPokemonCard } from "./api/pokemon-card.api";
+import { getPokemonCard, PokemonCard } from "./api/pokemon-card.api";
 import Loading from "./components/Loading";
 import "./App.css";
 
-// "https://images.pokemontcg.io/det1/1_hires.png"
-// "https://images.pokemontcg.io/bw5/1_hires.png"
-//  "https://images.pokemontcg.io/bw5/2_hires.png"
-// "https://images.pokemontcg.io/ru1/1_hires.png"
-// "https://images.pokemontcg.io/swsh35/1_hires.png"
-
-// artist:
-// "MPC Film"
-// attacks: [{…}]
-// cardmarket: {url: 'https://prices.pokemontcg.io/cardmarket/det1-1', updatedAt: '2023/02/22', prices: {…}}
-// convertedRetreatCost: 1
-// evolvesTo: ['Ivysaur']
-// flavorText: "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon."
-// hp: "60"
-// id: "det1-1"
-// images: {small: 'https://images.pokemontcg.io/det1/1.png', large: 'https://images.pokemontcg.io/det1/1_hires.png'}
-
 function App() {
   const [current, setCurrent] = useState(0);
+  const getRandomCardIndexes = (pokemonData: PokemonCard[]) => {
+    let indexes: number[] = [];
+    let randomPokemonData: PokemonCard[] = [];
+    while (indexes.length < 15) {
+      const randomIndex = Math.floor(Math.random() * 250);
+      if (!indexes.includes(randomIndex)) {
+        indexes.push(randomIndex);
+        randomPokemonData.push(pokemonData[randomIndex]);
+      }
+    }
+    return randomPokemonData;
+  };
   const { data } = useQuery({
     queryKey: ["pokemonCard"],
     queryFn: () => getPokemonCard(),
     select: (apiData) => {
       return {
         ...apiData,
-        data: apiData.data.sort(
-          (a: any, b: any) =>
-            a.nationalPokedexNumbers - b.nationalPokedexNumbers
-        ),
+        data: getRandomCardIndexes(apiData.data),
       };
     },
   });
-  const calcNum = (index: number) => {
-    if (index === -1) return data.count;
-    return index % data.count;
-  };
   console.log(data);
   return (
     <div className="container">
