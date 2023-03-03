@@ -11,10 +11,32 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100%;
+`;
+
+const CarouselScene = styled.div`
+  border: 1px solid #ccc;
+  position: relative;
+  width: 14.9rem;
+  height: 20.4rem;
+  perspective: 1000px;
+`;
+
+const Carousel = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: translate3d(0, 0, -35rem);
+  transform-style: preserve-3d;
+  transition: 1s;
 `;
 
 function App() {
-  const [current, setCurrent] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const cellCount = 15;
+  const theta = 360 / cellCount;
+  const cellSize = 14.9;
+  const radius = Math.round(cellSize / 2 / Math.tan(Math.PI / cellCount));
   const getRandomCardIndexes = (pokemonData: PokemonCard[]) => {
     let indexes: number[] = [];
     let randomPokemonData: PokemonCard[] = [];
@@ -40,7 +62,17 @@ function App() {
   console.log(data);
   return (
     <Container>
-      <Card />
+      <CarouselScene>
+        <Carousel>
+          {data?.data.map((card) => (
+            <Card
+              key={`${card.id}-${card.name}`}
+              name={card.name}
+              image={card.images.large}
+            />
+          ))}
+        </Carousel>
+      </CarouselScene>
     </Container>
   );
 }
