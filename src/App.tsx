@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { getPokemonCard, PokemonCard } from "./api/pokemon-card.api";
 import Loading from "./components/Loading";
 import Card from "./components/Card";
@@ -53,6 +53,7 @@ const ArrowWrapper = styled.div`
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [data, setData] = useState<PokemonCard[] | null>(null);
   const cellCount = 15;
   const theta = 360 / cellCount;
   const cellSize = 14.9;
@@ -71,16 +72,19 @@ function App() {
     return randomPokemonData;
   };
 
-  const { data } = useQuery({
-    queryKey: ["pokemonCard"],
-    queryFn: () => getPokemonCard(),
-    select: (apiData) => {
-      return {
-        ...apiData,
-        data: getRandomCardIndexes(apiData.data),
-      };
-    },
-  });
+  const { data: pokemonData } = useQuery(
+    ["pokemonCard"],
+    () => getPokemonCard(),
+    {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    }
+  );
+  useEffect(() => {
+    if (pokemonData) {
+      setData(getRandomCardIndexes(pokemonData?.data));
+    }
+  }, [pokemonData]);
   const rotateCarousel = (selectedIndex: number) => {
     const angle = theta * selectedIndex * -1;
     if (carouselRef?.current) {
@@ -99,13 +103,13 @@ function App() {
       return prevIndex + 1;
     });
   };
-  console.log(data);
+  console.log(currentIndex);
   return (
     <>
       <Container>
         <CarouselScene>
           <Carousel ref={carouselRef}>
-            {data?.data.map((card) => (
+            {data?.map((card) => (
               <Card
                 key={`${card.id}-${card.name}`}
                 name={card.name}

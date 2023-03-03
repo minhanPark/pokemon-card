@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
 const CardScene = styled.div`
@@ -55,11 +55,18 @@ const CardScene = styled.div`
   }
 `;
 
-const StyledCard = styled.div`
+const StyledCard = styled.div<{ isClick: boolean }>`
   width: 100%;
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
+  transition: transform 1.5s;
+  cursor: pointer;
+  ${({ isClick }) =>
+    isClick &&
+    css`
+      transform: rotateY(180deg);
+    `}
 `;
 
 const CardFace = styled.img<{ isBack?: boolean }>`
@@ -80,9 +87,15 @@ interface CardProps {
 }
 
 const Card = ({ name, image }: CardProps) => {
+  const [isClick, setIsClick] = useState(false);
+  const handleClick = () => {
+    const value = !isClick;
+    setIsClick(value);
+    console.log(value);
+  };
   return (
     <CardScene>
-      <StyledCard>
+      <StyledCard onClick={handleClick} isClick={isClick}>
         <CardFace src={image} alt={`${name}-front`} isBack />
         <CardFace
           src="https://tcg.pokemon.com/assets/img/global/tcg-card-back-2x.jpg"
