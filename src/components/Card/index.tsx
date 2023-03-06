@@ -91,7 +91,6 @@ const Card = ({ name, image }: CardProps) => {
   const handleClick = () => {
     const value = !isClick;
     setIsClick(value);
-    console.log(value);
   };
   return (
     <CardScene>
