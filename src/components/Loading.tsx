@@ -94,6 +94,7 @@ interface Props {
 
 /**
  * TODO: 로딩 부분은 바꾸기
+ * 애니메이션 자연스럽도록.
  */
 const Loading = ({ isLoading }: Props) => {
   const backgroundRef = useRef<HTMLDivElement>(null);
