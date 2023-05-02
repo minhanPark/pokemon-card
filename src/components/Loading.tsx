@@ -92,6 +92,9 @@ interface Props {
   isLoading: boolean;
 }
 
+/**
+ * TODO: 로딩 부분은 바꾸기
+ */
 const Loading = ({ isLoading }: Props) => {
   const backgroundRef = useRef<HTMLDivElement>(null);
   const [isShow, setIsShow] = useState(true);
